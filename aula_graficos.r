@@ -243,4 +243,26 @@ ggplot (ny, aes ( x = Month, y = Temp, group = Month, fill = Month)) +
   geom_boxplot() + facet_wrap (~ Windy)
 
 ##########################################################
+#exemplo histograma
+#30 bins por padrão
+ggplot (ny, aes (x = Temp)) + geom_histogram()
+#10 bins
+ggplot (ny, aes (x = Temp)) + geom_histogram(bins = 10)
+#definição da largura dos bins, o número de bins é calculado em função disso
+?geom_histogram
+#center: centraliza um dos bins naquele ponto
+#se o valor passado estiver fora do intervalo, há um deslocamento considerando
+# a largura dos bins
+#aqui há um bin centralizado em 80
+ggplot (ny, aes (x = Temp)) + geom_histogram(binwidth = 1, center = 80)
+ny
+
+#aqui haveria um bin centralizado em 0, assim, centralizamos nos inteiros
+ggplot (ny, aes (x = Temp)) + geom_histogram(binwidth = 1, center = 0)
+n
+
+#fill para diferenciar por cores
+ggplot (ny, aes (x = Temp)) + 
+  geom_histogram (aes (fill = Windy), binwidth = 5)
+
 
