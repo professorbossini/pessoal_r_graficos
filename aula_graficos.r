@@ -305,3 +305,13 @@ ggplot (tdf, aes (x = Class, weight = Freq, fill = Sex)) + geom_bar (position = 
 ggplot (tdf, aes (x = Class, weight = Freq, fill = Sex)) + 
   geom_bar (position = position_fill())
 ##########################################################
+#série temporal (mensal) em milhares
+?AirPassengers
+AirPassengers
+
+?time
+#observe que cada mês representa 0,083% de um ano
+time (AirPassengers)
+#gerando um gráfico de linhas
+Year <- as.numeric (time (AirPassengers))
+Year
