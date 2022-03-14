@@ -195,4 +195,42 @@ cor (faithful)
 #curva de tendência
 ggplot (faithful, aes (x = waiting, y = eruptions)) + geom_point() + geom_smooth()
 #########################################
+#testes com a base airquality
+?airquality
+#concentração de ozônio no ar
+#radiação solar
+#velocidade média do vento
+#temperatura em Fahrenheit
+#Mês (1-12)
+#Dia (1-31)
 
+#gráfico com pontos e escala de cor contínua
+#alpha controla nível de transparência
+ggplot (airquality, aes (x = Temp, y = Month)) + 
+  geom_point( aes (colour = Temp), alpha = 0.4) + 
+  scale_color_continuous(low = "blue", high = "red")
+
+#Group: cada caixinha se refere a um mês
+#box-plot
+#OBS: Os pontos representam outliers
+#Distância interquartil: Q3 - Q1
+#São aqueles que ficam:
+#Acima do boxplot, além de Q3 + 1.5 * (Q3 - Q1)
+#Abaixo do boxplot, além de Q1 - 1.5 * (Q3 - Q1)
+ggplot (airquality, aes (x = Month, y = Temp, group = Month)) + 
+  geom_boxplot()
+
+#três letras para o nome do mês
+?month.abb
+ny <- airquality
+#variável quantitativa se torna qualitativa
+ny$Month <- factor (
+              month.abb[ny$Month],
+              levels = month.abb,
+              ordered = TRUE
+            )
+
+ggplot (ny, aes (x = Month, y = Temp, group = Month, fill = Month)) +
+  geom_boxplot()
+
+##########################################################
