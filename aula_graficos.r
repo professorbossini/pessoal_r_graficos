@@ -1,5 +1,6 @@
-#exibindo a documentação
+#exibindo a documentação ? e help são a mesma coisa
 ?pressure
+help(pressure)
 #vendo a correlação
 cor(pressure)
 
@@ -171,4 +172,27 @@ p
 p <- p + theme (legend.position = c(0.85, 0.5))
 p
 
-################################################################3
+################################################################
+#novos testes com a base faithful
+
+#ver doc
+?faithful
+
+#ver a base
+#águas termais são aquecidas naturalmente, seja por energia geotermica (energia obtida a partir do calor do interior da terra) seja
+# por vulcanismo
+#um geiser é uma nascente termal que entra em erupção de tempos em tempos
+#a base tem duas variáveis: tempo de erupção em minutos
+#intervalo até a próxima erupção, em minutos
+faithful
+
+#gráfico de dispersão
+ggplot (faithful, aes ( x = waiting, y = eruptions)) + geom_point()
+
+#correlação
+cor (faithful)
+
+#curva de tendência
+ggplot (faithful, aes (x = waiting, y = eruptions)) + geom_point() + geom_smooth()
+#########################################
+
