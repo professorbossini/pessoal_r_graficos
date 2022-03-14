@@ -274,3 +274,34 @@ ggplot (ny, aes (x = Temp, colour = Windy)) + geom_density()
 #com preenchimento e transparência
 ggplot (ny, aes (x = Temp, colour = Windy, fill = Windy)) + geom_density(alpha = 0.2)
 ##########################################################
+#base Titanic
+?Titanic
+#crew significa tripulação
+#variaveis
+#class: 1, 2, 3, crew
+#sex: Male, Female
+#Age: Child, Adult
+#Survived No, Yes
+#as faz coerção
+?as
+#tdf: titanic_data_frame
+tdf <- as.data.frame(Titanic)
+tdf
+
+#weight: somatório agrupado da variável Freq
+ggplot (tdf, aes (x = Class, weight = Freq)) + geom_bar()
+
+
+#gráfico de colunas empilhadas
+ggplot (tdf, aes (x = Class, weight = Freq, fill = Sex)) + geom_bar()
+
+#gráfico com colunas de classe lado a lado
+ggplot (tdf, aes (x = Class, weight = Freq, fill = Sex)) + geom_bar (position = position_dodge())
+
+
+#valores de 0 a 1, gráfico empilhado novamente
+#valores em percentual agora
+#
+ggplot (tdf, aes (x = Class, weight = Freq, fill = Sex)) + 
+  geom_bar (position = position_fill())
+##########################################################
