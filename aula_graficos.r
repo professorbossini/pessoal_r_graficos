@@ -54,3 +54,121 @@ help(ggsave)
 #salva
 ggsave ("grafico.png", width = 6, height = 4)
 
+#################################################################
+#legendas
+
+#-10, -9, ..., 9, 10
+a <- -10:10
+a
+
+#-5, -4, ..., 4, 5
+f1 <- a + 5
+f1
+
+#15, 12.1, 9.4, ..., -5.9, -5
+f2 <- (a ** 2) / 10 -a - 5
+f2
+
+#ver documentações
+help(data)
+help (data.frame)
+
+#gerar um dataframe
+df <- data.frame (a, f1, f2)
+
+#documentação
+help(head)
+
+#6 primeiros, por padrão
+head(df)
+
+#10 primeiros
+head (df, 10)
+
+#todos menos os dois últimos
+head (df, -2)
+
+#apagar o gráfico da memória, se desejar
+p <- NULL
+
+#construindo o gráfico, ainda sem camadas
+p <- ggplot (df, aes (x = a))
+p
+
+#doc da aes (ver colour, por exemplo)
+help (aes)
+
+
+#pontos referentes à coluna f1
+#colour está sendo usado para escolher o título da legenda
+p <- p + geom_point (aes (y = f1, colour='f1'))
+p
+
+#curva referente à coluna f2
+p <- p + geom_line (aes (y = f2, colour = 'f2'))
+p
+
+#legenda e título
+p <- p + labs (x = 'x', y = 'y', colour = 'Legenda:', title="Meu Teste")
+p
+
+#tema do gráfico
+p <- p + theme_classic()
+p
+
+#outro tema
+p <- p + theme_linedraw()
+p
+
+#outro tema
+p <- p + theme_light()
+p
+
+#outro tema
+p <- p + theme_dark()
+p
+
+#outro tema
+p <- p + theme_void()
+p
+
+#outro tema
+p <- p + theme_minimal()
+p
+
+#usando a função theme para alterar detalhes do gráfico
+#hjust: ajuste horizontal: 0.5 centraliza, testar valores de 0 a 1
+p <- p + theme (plot.title = element_text (hjust = 0.5))
+p
+
+#vendo as layers (somente os geoms, themes não entram)
+p$layers
+
+
+
+#trocando cor dos nomes dos eixos
+p <- p + theme (axis.title = element_text (color = 'blue'))
+p
+
+#caixa na legenda
+p <- p + theme (legend.background = element_rect (linetype = 'solid'))
+p
+
+#limpando o tema se quiser
+p$theme <- NULL
+p
+
+#legenda na parte de baixo
+p <- p + theme (legend.position = 'bottom')
+p
+
+#legenda em posição qualquer
+#aqui fica bem no meio da tela
+p <- p + theme (legend.position = c(0.5, 0.5))
+p
+
+#legenda em posição qualquer
+p <- p + theme (legend.position = c(0.85, 0.5))
+p
+
+################################################################3
