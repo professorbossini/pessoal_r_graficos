@@ -234,3 +234,13 @@ ggplot (ny, aes (x = Month, y = Temp, group = Month, fill = Month)) +
   geom_boxplot()
 
 ##########################################################
+#função facet_wrap() para dividir um gráfico em subgráficos
+help('~')
+#operador til representa uma fórmula
+#faça testes com Windy, Month e Temp, por exemplo
+ny$Windy <- ifelse (ny$Wind > 10, "Windy", "Not Windy")
+ggplot (ny, aes ( x = Month, y = Temp, group = Month, fill = Month)) + 
+  geom_boxplot() + facet_wrap (~ Windy)
+
+##########################################################
+
