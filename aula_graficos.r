@@ -264,5 +264,13 @@ n
 #fill para diferenciar por cores
 ggplot (ny, aes (x = Temp)) + 
   geom_histogram (aes (fill = Windy), binwidth = 5)
+##########################################################
+#densidade
+ggplot (ny, aes (x = Temp)) + geom_density()
 
+#colour para gerar uma curva para cada valor da variável especificada
+ggplot (ny, aes (x = Temp, colour = Windy)) + geom_density() 
 
+#com preenchimento e transparência
+ggplot (ny, aes (x = Temp, colour = Windy, fill = Windy)) + geom_density(alpha = 0.2)
+##########################################################
