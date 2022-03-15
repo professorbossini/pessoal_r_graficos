@@ -322,3 +322,45 @@ air <- data.frame (Year, Passengers)
 airG <- ggplot (air, aes (x = Year, y = Passengers)) + geom_line()
 airG
 ##########################################################
+?trunc
+#compare para ver o efeito de trunc
+as.numeric(time(AirPassengers))
+trunc(as.numeric(time(AirPassengers)))
+Year <- trunc(as.numeric(time(AirPassengers)))
+#[,1] indica coluna 1
+#[1,] indica linha 1
+Passengers <- as.matrix (AirPassengers)
+Passengers
+air <- data.frame (Year, Passengers)       
+airMean <- aggregate(air$Passengers, list (air$Year), mean)
+airMean
+
+#troca os nomes das colunas
+colnames(airMean) <- c ("Year", "Passengers")
+head(airMean)
+
+#gráfico
+ggplot (airMean, aes (x = Year, y = Passengers)) + geom_line()
+
+#airG já existia, estamos adicionando mais uma camada
+airG + geom_line(colour = "red", data = airMean, aes (x = Year, y = Passengers))
+
+
+ny
+nyMedian <- aggregate(
+    ny[c("Ozone", "Solar.R", "Temp")],
+    list (ny$Month, ny$Windy),
+    median,
+    na.rm = TRUE #remover valores NA
+)
+colnames (nyMedian) <- c ("Month", "Windy", "Ozone", "Solar.R", "Temp")
+nyMedian
+
+#agrupando por Windy
+ggplot (nyMedian, aes (x = Month, y = Temp, group = Windy, colour = Windy)) +
+  geom_line() + geom_point() + ylab ("Temperatura mediana")
+
+ggplot (nyMedian, aes (x = Month, y = Temp, group = Windy, colour = Windy)) + 
+  geom_line() + geom_point() + ylab ("Median Temperature") + 
+  facet_wrap ( ~ Windy) + theme (legend.position = "none")
+
