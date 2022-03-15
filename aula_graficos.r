@@ -1,3 +1,4 @@
+library (ggplot2)
 #exibindo a documentação ? e help são a mesma coisa
 ?pressure
 help(pressure)
@@ -315,3 +316,9 @@ time (AirPassengers)
 #gerando um gráfico de linhas
 Year <- as.numeric (time (AirPassengers))
 Year
+
+Passengers <- as.matrix (AirPassengers)
+air <- data.frame (Year, Passengers)
+airG <- ggplot (air, aes (x = Year, y = Passengers)) + geom_line()
+airG
+##########################################################
